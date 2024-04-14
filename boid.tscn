@@ -1,13 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnlw7w6k3h36t"]
+[gd_scene load_steps=5 format=3 uid="uid://dnlw7w6k3h36t"]
 
 [ext_resource type="Script" path="res://boid.gd" id="1_7bipj"]
 [ext_resource type="Texture2D" uid="uid://dplxlcl8v3c2o" path="res://boidsprite.png" id="1_vi3vm"]
+[ext_resource type="Texture2D" uid="uid://v4qqch6ic02t" path="res://chosenpoint.png" id="3_7217x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5btke"]
 radius = 3.60555
 
 [node name="boid" type="CharacterBody2D"]
 script = ExtResource("1_7bipj")
+separation_strength = 4.485
+alignment_strength = 0.5
+cohesion_strength = 2.0
+collision_avoidance_strength = 5000.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2, 0)
@@ -15,5 +20,11 @@ rotation = 1.5708
 scale = Vector2(0.520197, 0.520197)
 texture = ExtResource("1_vi3vm")
 
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.520197, 0.520197)
+texture = ExtResource("3_7217x")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_5btke")

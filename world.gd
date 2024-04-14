@@ -1,6 +1,6 @@
 extends Node2D
 
-var boid_amount = 100
+var boid_amount = 50
 var boid = preload("res://boid.tscn")
 
 # Called when the node enters the scene tree for the first time.
@@ -11,3 +11,6 @@ func _ready():
 		add_child(new_boid)
 		new_boid.position.x = randf_range(0,1000)
 		new_boid.position.y = randf_range(0,600)
+		
+		#new_boid.position.x = 500
+		#new_boid.position.y = 300
