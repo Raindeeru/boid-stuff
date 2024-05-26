@@ -15,9 +15,15 @@ run/main_scene="res://world.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+QTree="*res://q_tree.gd"
+DebugDraw2D="*res://addons/debugdraw2d/DebugDraw2D.gd"
+
 [display]
 
 window/size/always_on_top=true
+window/vsync/vsync_mode=0
 
 [input]
 

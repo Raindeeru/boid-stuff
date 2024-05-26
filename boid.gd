@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 200
+@export var SPEED = 200
 var direction: Vector2
 
 var vision_range = 200
@@ -101,7 +101,7 @@ func _physics_process(delta):
 	var best_avoid_length = 0.0
 	
 	for point in view_points:
-		var query = PhysicsRayQueryParameters2D.create(position, position + point*(vision_range+150))
+		var query = PhysicsRayQueryParameters2D.create(position, position + point*(vision_range))
 		var result = space_state.intersect_ray(query)
 		if result:
 			if (result.position - position).length() > best_avoid_length:
@@ -125,7 +125,9 @@ func _physics_process(delta):
 
 func get_boids_in_range(given_range:float):
 	var boids_in_range = []
-	for boid in get_parent().get_children():
+	var boids_to_check = QTree.test.query(position, given_range, given_range)
+	
+	for boid in boids_to_check:
 		if boid == self:
 			continue
 		if position.distance_to(boid.position) < given_range && boid is CharacterBody2D:
